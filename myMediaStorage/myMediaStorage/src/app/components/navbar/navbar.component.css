@@ -1,0 +1,11 @@
+nav {
+  background: #0B8BCF;
+}
+
+a {
+  color: #FFF;
+}
+
+.navbar-nav li a:active {
+  color: #000;
+}
