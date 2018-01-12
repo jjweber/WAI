@@ -21,7 +21,8 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'contactUs', component: ContactUsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent }
+  { path: 'signup', component: SignupComponent },
+  { path: 'logout', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({

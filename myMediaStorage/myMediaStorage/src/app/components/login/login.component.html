@@ -1,3 +1,41 @@
-<p>
-  login works!
-</p>
+<div class="page-container">
+    <div class="login-container">
+        <h1 class="title-text">Login</h1>
+
+        <section class="credentials">
+            <form action="">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button class="btn btn-primary">Login</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <a class="nav-link mute" [routerLink]="['/login']">Forgot your password?</a>
+                        </div>
+                    </div>
+                  </div>
+            </form>
+        </section>
+
+        <hr>
+
+        <section class="signup">
+            <p>Not a member yet? Sign up now!</p>
+            <button class="btn btn-dark">Sign up</button>
+        </section>
+    </div>
+</div>
