@@ -1,0 +1,42 @@
+.header-row {
+    margin-top: 2rem;
+    max-width: 100%;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-field {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.video-container {
+  margin: 0 3.6rem;
+}
+
+.searched-videos {
+  text-decoration: underline;
+}
+
+.card-deck {
+  justify-content: start;
+}
+
+.card {
+  margin-top:2rem;
+  min-width: 195px;
+  max-width: 196px;
+}
+
+.card-text {
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 1199px) {
+  .card-deck {
+
+  }
+}

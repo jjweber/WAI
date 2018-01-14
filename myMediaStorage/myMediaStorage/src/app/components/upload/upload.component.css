@@ -1,0 +1,45 @@
+.page-title {
+  text-decoration: underline;
+  margin-top: 2rem;
+}
+
+.upload-controls {
+  margin-bottom: 5rem;
+}
+
+.btn-container {
+  position: relative;
+}
+
+.upload-button {
+  position: absolute;
+  left: 15px;
+  top: 5px;
+}
+
+.file-container {
+  position: relative;
+}
+
+.file-select {
+  position: absolute;
+  right: -110px;
+  top: 5px;
+}
+
+.drop-container {
+  background: #E5E9F2;
+  border: dashed 2px #000;
+}
+
+.upload-image {
+  width: 300px;
+  display: inline-block;
+}
+
+.upload-text {
+  font-size: 45px;
+  font-weight: bold;
+  color: #969EA9;
+  display: inline-block;
+}
