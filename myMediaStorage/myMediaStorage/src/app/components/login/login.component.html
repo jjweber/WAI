@@ -19,12 +19,12 @@
 
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <button class="btn btn-primary">Login</button>
+                            <button class="btn btn-primary" [routerLink]="['/home']">Login</button>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <a class="nav-link mute" [routerLink]="['/login']">Forgot your password?</a>
+                            <a class="nav-link" [routerLink]="['/login']">Forgot your password?</a>
                         </div>
                     </div>
                   </div>
@@ -35,7 +35,7 @@
 
         <section class="signup">
             <p>Not a member yet? Sign up now!</p>
-            <button class="btn btn-dark">Sign up</button>
+            <button class="btn btn-dark" [routerLink]="['/signup']">Sign up</button>
         </section>
     </div>
 </div>
