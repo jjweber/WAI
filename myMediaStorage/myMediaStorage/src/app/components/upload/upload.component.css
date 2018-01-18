@@ -1,35 +1,31 @@
+.upload-container {
+  margin-left: 3.6rem;
+  margin-right: 3.6rem;
+}
+
 .page-title {
   text-decoration: underline;
-  margin-top: 2rem;
+  margin: 2rem 0;
 }
 
 .upload-controls {
-  margin-bottom: 5rem;
-}
-
-.btn-container {
-  position: relative;
+  margin-bottom: 7rem;
 }
 
 .upload-button {
-  position: absolute;
-  left: 15px;
-  top: 5px;
+  float: left;
 }
 
-.file-container {
-  position: relative;
-}
-
-.file-select {
-  position: absolute;
-  right: -110px;
-  top: 5px;
+.file-input {
+  float: right;
+  width: 220px;
 }
 
 .drop-container {
   background: #E5E9F2;
   border: dashed 2px #000;
+  width: 100%;
+  margin-bottom: 8rem;
 }
 
 .upload-image {
@@ -42,4 +38,21 @@
   font-weight: bold;
   color: #969EA9;
   display: inline-block;
+}
+
+@media only screen and (max-width: 500px) {
+  .upload-button,
+  .file-input {
+    width: 100%;
+    margin: 1rem auto;
+    float: none;
+  }
+
+  .file-input {
+    margin-left: 1.5rem;
+  }
+
+  .drop-container {
+    display: none;
+  }
 }

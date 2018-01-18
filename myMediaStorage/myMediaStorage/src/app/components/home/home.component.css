@@ -1,6 +1,7 @@
 .header-row {
-    margin-top: 2rem;
-    max-width: 100%;
+  width: 93%;
+  padding: 0;
+  margin: 2rem auto;
 }
 
 .search-container {
@@ -8,13 +9,12 @@
 }
 
 .search-field {
-    position: absolute;
-    right: 10px;
-    top: 5px;
+    display: block;
+    padding: 15px;
 }
 
 .video-container {
-  margin: 0 3.6rem;
+  margin: 0 3.6rem 8rem 3.6rem;
 }
 
 .searched-videos {
@@ -27,16 +27,81 @@
 
 .card {
   margin-top:2rem;
-  min-width: 195px;
-  max-width: 196px;
+  min-width: calc(100% / 3);
 }
 
 .card-text {
   font-size: 12px;
 }
 
-@media only screen and (max-width: 1199px) {
-  .card-deck {
+@media only screen and (max-width: 767px) {
 
+  button.btn.btn-outline-success.my-2.my-sm-0 {
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .card {
+    min-width: calc(100% / 4);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .message-text {
+    text-align: left;
+    margin-left: 5px;
+  }
+
+  .search-field {
+    position: absolute;
+    right: 4%;
+    top: 5px;
+  }
+}
+
+@media only screen and (min-width: 850px) {
+  .search-field {
+    right: 3%;
+  }
+
+  .card {
+    min-width: calc(100% / 5);
+  }
+}
+
+@media only screen and (min-width: 875px) {
+  .search-field {
+    right: 2%;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .message-text {
+    margin-left: 0;
+  }
+
+  .search-field {
+    right: 1%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .search-field {
+    right: 0;
+  }
+
+  .card {
+    min-width: calc(100% / 6);
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  .message-text {
+    margin-left: -15px;
+  }
+
+  .search-field {
+    right: -1%;
   }
 }
