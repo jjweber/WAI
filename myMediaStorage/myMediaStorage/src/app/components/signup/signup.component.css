@@ -13,7 +13,7 @@
 
 .signup-information {
   width: 60%;
-  margin: 0 auto;
+  margin: 0 auto 8rem auto;
 }
 
 hr {
@@ -34,8 +34,18 @@ hr {
 }
 
 @media only screen and (max-width: 600px) {
+  .page-container {
+    padding: 0;
+  }
+
   .signup-container {
     width: 100%;
-    margin: 0 0;
+    margin: 4rem 0;
+    padding: 0;
+  }
+
+  .signup-information {
+    width: 100%;
+    padding: .5rem;
   }
 }

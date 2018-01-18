@@ -7,7 +7,7 @@
 .login-container {
   background: #FFF;
   width: 60%;
-  margin: 0 auto;
+  margin: 0 auto 8rem auto;
   padding: 2rem;
 }
 
@@ -36,9 +36,25 @@ hr {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 500px) {
+  input {
+    width: 100%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
+  .page-container {
+    padding: 0;
+  }
+
   .login-container {
     width: 100%;
-    margin: 0 0;
+    margin-top: 2em;;
+    padding: 2rem .5rem;
+  }
+
+  .credentials,
+  .signup {
+    width: 100%;
   }
 }
