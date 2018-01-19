@@ -19,10 +19,13 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.youtubeApiService.getVideos()
     // Subscribing to the function to get access to its data.
-    .subscribe((data) => this.videosList = data.videos);
 
-    console.log(this.videosList);
+    .subscribe((data) => {
+      console.log('Data: ', data);
+      this.videosList = data.items;
 
+      console.log(this.videosList);
+    });  
   }
 
 }
