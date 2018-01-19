@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+
+import { YoutubeApiService } from '../../services/youtube-api.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  videosList: any = [];
+  videos: any;
+
+  constructor(private youtubeApiService: YoutubeApiService) { }
 
   ngOnInit() {
+    this.youtubeApiService.getVideos()
+    // Subscribing to the function to get access to its data.
+    .subscribe((data) => this.videosList = data.videos);
+
+    console.log(this.videosList);
+
   }
 
 }

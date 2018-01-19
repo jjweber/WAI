@@ -14,6 +14,10 @@ import { SignupComponent } from './components/signup/signup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+import { YoutubeApiService } from './services/youtube-api.service';
+
+
+
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -44,7 +48,7 @@ const appRoutes: Routes = [
     JsonpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [YoutubeApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
