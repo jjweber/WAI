@@ -25,6 +25,10 @@
   justify-content: start;
 }
 
+#modalBtn {
+  cursor: pointer;
+}
+
 .card {
   margin-top:2rem;
   min-width: calc(100% / 3);
@@ -32,8 +36,76 @@
 
 .card-text {
   font-size: 12px;
+  max-height: 90px;
+  overflow-x: hidden;
 }
 
+iframe {
+  width: 100%;
+  min-height: 350px;
+  border: 1px solid #EEE;
+}
+
+/*************************************************/
+/* Modal Styles */
+/*************************************************/
+.modal-dialog {
+  min-width: 100%;
+  margin: 0;
+}
+
+.modal-header,
+.modal-body {
+  background: #000;
+  color: #EEE;
+}
+
+.close {
+  color: #EEE;
+}
+
+.modal.modal-fullscreen .modal-dialog,
+.modal.modal-fullscreen .modal-content {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.modal.modal-fullscreen .modal-dialog {
+  margin: 0;
+  width: 100%;
+  animation-duration:0.6s;
+}
+.modal.modal-fullscreen .modal-content {
+  border: none;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: inherit;
+  -moz-box-shadow: inherit;
+  -o-box-shadow: inherit;
+  box-shadow: inherit;
+}
+
+.modal.modal-fullscreen.force-fullscreen .modal-body {
+  padding: 0;
+}
+.modal.modal-fullscreen.force-fullscreen .modal-header,
+.modal.modal-fullscreen.force-fullscreen .modal-footer {
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+.modal.modal-fullscreen.force-fullscreen .modal-header {
+  top: 0;
+}
+.modal.modal-fullscreen.force-fullscreen .modal-footer {
+  bottom: 0;
+}
+
+/*************************************************/
+/* Media Queries */
+/*************************************************/
 @media only screen and (max-width: 767px) {
 
   button.btn.btn-outline-success.my-2.my-sm-0 {

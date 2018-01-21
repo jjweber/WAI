@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+
 import { HomeComponent } from './components/home/home.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -14,7 +15,9 @@ import { SignupComponent } from './components/signup/signup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-import { YoutubeApiService } from './services/youtube-api.service';
+import { YoutubeApiService } from './services/YouTube/youtube-api.service';
+import { SavedMediaService } from './services/Saved-Media/saved-media.service';
+import { YoutubePipe } from './pipes/youtube.pipe';
 
 
 
@@ -39,7 +42,8 @@ const appRoutes: Routes = [
     LoginComponent,
     SignupComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    YoutubePipe
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,7 @@ const appRoutes: Routes = [
     JsonpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [YoutubeApiService],
+  providers: [YoutubeApiService, SavedMediaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
