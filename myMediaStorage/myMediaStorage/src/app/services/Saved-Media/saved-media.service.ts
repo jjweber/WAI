@@ -10,7 +10,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class SavedMediaService {
 
-  private _getUrl = 'api/videos';
+  private _getUrl = '/api/videos';
   constructor(private _http: Http) { }
 
   getVideos() {

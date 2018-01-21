@@ -8,7 +8,8 @@ import { SavedMediaService } from '../../services/Saved-Media/saved-media.servic
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: [SavedMediaService]
 })
 export class ProfileComponent implements OnInit {
   videos: Array<Video>;
@@ -19,10 +20,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this._savedMediaService.getVideos()
-    .subscribe(resVideoData => {
-      this.videos = resVideoData;
-      console.log(this.videos);
-    });
+    .subscribe(resVideoData => this.videos = resVideoData);
   }
 
   onSelectVideo(video: any) {

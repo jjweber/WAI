@@ -12,6 +12,10 @@ mongoose.connect(db, function(err) {
   }
 });
 
+router.get('/', (req, res) => {
+  res.send('api works');
+});
+
 //////////////////////
 // Video Routes
 //////////////////////
