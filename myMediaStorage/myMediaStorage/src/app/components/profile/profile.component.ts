@@ -20,7 +20,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this._savedMediaService.getVideos()
-    .subscribe(resVideoData => this.videos = resVideoData);
+    .subscribe(resVideoData => {
+      this.videos = resVideoData;
+      console.log(this.videos);
+    });
   }
 
   onSelectVideo(video: any) {

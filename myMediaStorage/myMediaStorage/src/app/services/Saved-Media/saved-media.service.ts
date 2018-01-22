@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+import { Video } from './../../video';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -11,20 +12,19 @@ import 'rxjs/add/operator/toPromise';
 export class SavedMediaService {
 
   private _getUrl = '/api/videos';
+  private _postUrl = '/api//video';
   constructor(private _http: Http) { }
 
   getVideos() {
     return this._http.get(this._getUrl)
-    .map((response: Response) => response.json());
+      .map((response: Response) => response.json());
   }
-/*
-  saveVideo(data: Video): Observable<string[]> {
-    const headers = new Headers({
-      'Content-Type': 'application/json'});
 
-    return this.http.post('/api/videos/', JSON.stringify(data), {
-      headers: headers
-    }).map((res) => res.json().data);
+  addVideo(video: Video) {
+    const headers = new Headers({ 'Content-Type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+    return this._http.post(this._postUrl, JSON.stringify(video), options)
+      .map((response: Response) => response.json());
   }
-*/
+
 }
