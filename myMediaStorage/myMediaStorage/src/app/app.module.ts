@@ -18,6 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { YoutubeApiService } from './services/YouTube/youtube-api.service';
 import { SavedMediaService } from './services/Saved-Media/saved-media.service';
 import { YoutubePipe } from './pipes/youtube.pipe';
+import { AlbumComponent } from './components/album/album.component';
 
 
 
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'upload', component: UploadComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'album', component: AlbumComponent },
   { path: 'contactUs', component: ContactUsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
@@ -43,7 +45,8 @@ const appRoutes: Routes = [
     SignupComponent,
     NavbarComponent,
     FooterComponent,
-    YoutubePipe
+    YoutubePipe,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,

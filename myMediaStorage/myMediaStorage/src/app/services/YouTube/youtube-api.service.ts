@@ -6,10 +6,11 @@ import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class YoutubeApiService {
-  baseYTURL = 'https://www.googleapis.com/youtube/v3/videos?';
+  baseDefaultYTURL = 'https://www.googleapis.com/youtube/v3/videos?';
+  baseSearchedYTURL = 'https://www.googleapis.com/youtube/v3/search?';
   part = 'snippet';
   // channelID  = 'UCPsopTKQfSgW9XdYkKA6Gdw';
-  searchQuery= 'Webdesign';
+  // searchQuery= 'The Hulk';
   type = 'video';
   maxResults = 20;
   API_key    = 'AIzaSyB6fDbzn-_44vn0_zYHiVWkRnOL5xbhK60';
@@ -19,11 +20,17 @@ export class YoutubeApiService {
   getVideos() {
 
       // videoList = json_decode(file_get_contents('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId='.$channelID.'&maxResults='.$maxResults.'&key='.$API_key.''));
-      const videoList = this.baseYTURL + 'part=' + this.part + '&q=' + this.searchQuery + '&apiKey=' + this.API_key;
+      // const videoList = this.baseYTURL + 'part=' + this.part + '&q=' + this.searchQuery + '&apiKey=' + this.API_key;
 
-      const popularVideos = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostpopular&maxResults=20&key=AIzaSyB6fDbzn-_44vn0_zYHiVWkRnOL5xbhK60`;
+      const popularVideos = this.baseDefaultYTURL + `part=` + this.part + `&chart=mostpopular&maxResults=` + this.maxResults + `&key=` + this.API_key;
       return this.http.get(popularVideos)
       // Mapping the results to json.
+      .map((res: any) => res.json());
+  }
+
+  getVideoBySearchedTopic(searchQuery) {
+    const passedVideoSearchQuery = this.baseSearchedYTURL + `part=` + this.part + `&maxResults=` + this.maxResults + `&q=` + searchQuery + `&key=` + this.API_key;
+    return this.http.get(passedVideoSearchQuery)
       .map((res: any) => res.json());
   }
 

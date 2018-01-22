@@ -1,20 +1,10 @@
-.header-row {
-  width: 93%;
-  padding: 0;
-  margin: 2rem auto;
-}
-
-.search-container {
-    position: relative;
-}
-
-.search-field {
-    display: block;
-    padding: 15px;
-}
-
 .video-container {
   margin: 0 3.6rem 8rem 3.6rem;
+}
+
+.backBtn {
+  float: left;
+  margin: 2rem 3.6rem 0 3.6rem;
 }
 
 .searched-videos {
@@ -31,7 +21,7 @@
 
 .card {
   margin-top:2rem;
-  min-width: calc(100% / 3);
+  min-width: calc(100% / 6);
 }
 
 .card-text {
@@ -49,6 +39,7 @@ iframe {
 .hidden {
   display: none;
 }
+
 
 /*************************************************/
 /* Modal Styles */
