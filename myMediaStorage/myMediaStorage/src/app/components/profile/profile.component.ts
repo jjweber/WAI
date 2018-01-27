@@ -1,3 +1,4 @@
+import { ProfileInfo } from './../../profile-info';
 import { Video } from './../../video';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';

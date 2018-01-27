@@ -1,19 +1,90 @@
 const express = require('express');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const router = express.Router();
 const mongoose = require('mongoose');
 const Video = require('../models/video');
+const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+const config = require('../config/database');
 
-db = 'mongodb://root:root@ds263707.mlab.com:63707/saved-media';
 
+const ProifleInfo = require('../models/profileInfo');
+
+/*
 mongoose.Promise = global.Promise;
 mongoose.connect(db, function(err) {
   if(err) {
     console.error('Error! ' + err);
   }
 });
+*/
+
+//////////////////////
+// Protected Routes
+//////////////////////
 
 router.get('/', (req, res) => {
   res.send('api works');
+});
+
+//////////////////////
+// User Routes
+//////////////////////
+// Register an account
+router.post('/register', function(req, res, next) {
+  console.log('Register a user');
+  const newUser = new User({
+    name: req.body.name,
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password
+  });
+
+  newUser.save(function(err, insertedUser) {
+      if(err) {
+        console.log('Error registering the user!');
+      } else {
+        res.json(insertedUser);
+      }
+  });
+});
+
+// Authenticate user
+router.post('/authenticate', function(req, res, next) {
+
+    const username = req.body.username;
+    const password = req.body.password;
+
+    User.getUserByUsername(username, (err, user) => {
+      if(err) throw err;
+      if (!user) {
+        return res.json({success: false, msg: 'User not found'});
+      }
+    });
+
+    User.comparePassword(password, user.password, (err, isMatch) => {
+      if(err) throw err;
+      if (isMatch) {
+        const token = jwt.sign(user, 'config.secret', {
+          expiresIn: 604800 // 1 week
+        });
+
+        res.json({
+          success: true,
+          token: 'JTW' + token,
+          user: {
+            id: user._id,
+            name: user.name,
+            username: user.username,
+            email: user.email
+          }
+        });
+      } else {
+        return res.json({success: false, msg: 'Wrong password'});
+      }
+    });
 });
 
 //////////////////////
@@ -76,6 +147,57 @@ router.delete('/video/:id', function(req, res) {
       res.json(deletedVideo);
     }
   });
+});
+
+
+
+//////////////////////
+// ProfileInfo Routes
+//////////////////////
+
+// Find one video
+router.get('/profile-info/:id', function(req, res) {
+  console.log('Get request for one profile data');
+  ProifleInfo.findById(req.params.id)
+  .exec(function(err, profiledata) {
+    if(err) {
+      console.log('Error retrieving profile data');
+    } else {
+      res.json(profiledata);
+    }
+  })
+
+});
+
+// Save a video
+router.post('/video', function(req, res) {
+  console.log('Post a video');
+  const newProfile = new ProifleInfo();
+  newProfile.profileImageUrl = req.body.profileImageUrl,
+  newProfile.name = req.body.name,
+  newProfile.age = req.body.age,
+  newProfile.bio = req.body.bio,
+  newProfile.save(function(err, insertedProfile) {
+      if(err) {
+        console.log('Error saving video');
+      } else {
+        res.json(insertedVideo);
+      }
+  });
+});
+
+
+/////////////////////////////
+// Logout and Testing Routes
+/////////////////////////////
+
+router.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
+
+router.get('/ping', function(req, res){
+  res.status(200).send("pong!");
 });
 
 module.exports = router;

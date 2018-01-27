@@ -2,33 +2,27 @@
     <div class="login-container">
         <h1 class="title-text">Login</h1>
 
+        <!-- Form Alert component -->
+        <flash-messages></flash-messages>
         <section class="credentials">
-            <form action="">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <button class="btn btn-primary" [routerLink]="['/home']">Login</button>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <a class="nav-link" [routerLink]="['/login']">Forgot your password?</a>
-                        </div>
-                    </div>
-                  </div>
+            <form (submit) = "onLoginSubmit()">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" [(ngModel)] = "username" name="username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" [(ngModel)] = "password" name="password">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Login">
             </form>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <a class="nav-link" [routerLink]="['/signup']">Forgot your password?</a>
+                </div>
+            </div>
+
+
         </section>
 
         <hr>
