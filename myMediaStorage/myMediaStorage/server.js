@@ -24,7 +24,6 @@ mongoose.connection.on('error', (err) => {
   console.log('Database error '+err);
 });
 
-
 const app = express();
 
 const port = process.env.PORT || '3000';
@@ -36,14 +35,6 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/api', api);
-
-/*
-app.use(session({
-  secret: 'secret',
-  saveUninitialized: true,
-  resave: true
-}));
-*/
 
 // Passport init
 app.use(passport.initialize());

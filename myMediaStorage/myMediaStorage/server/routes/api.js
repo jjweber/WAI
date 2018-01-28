@@ -9,17 +9,7 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 
-
 const ProifleInfo = require('../models/profileInfo');
-
-/*
-mongoose.Promise = global.Promise;
-mongoose.connect(db, function(err) {
-  if(err) {
-    console.error('Error! ' + err);
-  }
-});
-*/
 
 //////////////////////
 // Protected Routes
@@ -32,6 +22,7 @@ router.get('/', (req, res) => {
 //////////////////////
 // User Routes
 //////////////////////
+
 // Register an account
 router.post('/register', function(req, res, next) {
   console.log('Register a user');
@@ -54,35 +45,40 @@ router.post('/register', function(req, res, next) {
 // Authenticate user
 router.post('/authenticate', function(req, res, next) {
 
+    console.log('Here 1');
+
     const username = req.body.username;
     const password = req.body.password;
 
     User.getUserByUsername(username, (err, user) => {
       if(err) throw err;
+
+      console.log('User: ', user);
+
       if (!user) {
+        console.log(user);
         return res.json({success: false, msg: 'User not found'});
-      }
-    });
-
-    User.comparePassword(password, user.password, (err, isMatch) => {
-      if(err) throw err;
-      if (isMatch) {
-        const token = jwt.sign(user, 'config.secret', {
-          expiresIn: 604800 // 1 week
-        });
-
-        res.json({
-          success: true,
-          token: 'JTW' + token,
-          user: {
-            id: user._id,
-            name: user.name,
-            username: user.username,
-            email: user.email
-          }
-        });
       } else {
-        return res.json({success: false, msg: 'Wrong password'});
+
+        if(user.password === password) {
+          const token = jwt.sign(user, 'config.secret', {
+            expiresIn: 604800 // 1 week
+          });
+
+          res.json({
+            success: true,
+            token: 'JTW' + token,
+            user: {
+              id: user._id,
+              name: user.name,
+              username: user.username,
+              email: user.email
+            }
+          });
+        }
+        else {
+          return res.json({success: false, msg: 'Wrong password'});
+        }
       }
     });
 });
@@ -149,8 +145,6 @@ router.delete('/video/:id', function(req, res) {
   });
 });
 
-
-
 //////////////////////
 // ProfileInfo Routes
 //////////////////////
@@ -185,7 +179,6 @@ router.post('/video', function(req, res) {
       }
   });
 });
-
 
 /////////////////////////////
 // Logout and Testing Routes

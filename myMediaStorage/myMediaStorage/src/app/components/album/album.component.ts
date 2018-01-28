@@ -29,7 +29,9 @@ export class AlbumComponent implements OnInit {
     console.log(this.selectedContent);
   }
 
-  removeContent() {
+  removeContent(content: any) {
+    // Calling addVideo from savedMediaService and passing it my videoStore array.
+    this._savedMediaService.deleteVideo(this.selectedContent);
 
   }
 

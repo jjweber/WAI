@@ -3,6 +3,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const User = require('../models/user');
 const config = require('../config/database');
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
 
 module.exports = function(passport) {
   let opts = {};
@@ -22,3 +23,11 @@ module.exports = function(passport) {
     });
   }));
 }
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});

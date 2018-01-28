@@ -13,6 +13,8 @@ export class SavedMediaService {
 
   private _getUrl = '/api/videos';
   private _postUrl = '/api/video';
+  private _deleteUrl = '/api/video/:id';
+
   constructor(private _http: Http) { }
 
   getVideos() {
@@ -24,6 +26,13 @@ export class SavedMediaService {
     const headers = new Headers({ 'Content-Type': 'application/json'});
     const options = new RequestOptions({headers: headers});
     return this._http.post(this._postUrl, JSON.stringify(video), options)
+      .map((response: Response) => response.json());
+  }
+
+  deleteVideo(video: Video) {
+    const headers = new Headers({ 'Content-Type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+    return this._http.post(this._deleteUrl, JSON.stringify(video), options)
       .map((response: Response) => response.json());
   }
 
